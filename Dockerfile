@@ -11,7 +11,7 @@ ENV WORKSPACE=/workspace
 WORKDIR /tmp
 
 # Use a direct mirror link for Eclipse 2025-06 tarball
-RUN wget -O eclipse.tar.gz "https://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/2025-06/R/eclipse-java-2025-06-R-linux-gtk-x86_64.tar.gz" && \
+RUN wget -O eclipse.tar.gz "https://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/2025-06/R/eclipse-committers-2025-06-R-linux-gtk-x86_64.tar.gz" && \
     mkdir -p $ECLIPSE_HOME && \
     tar -xzf eclipse.tar.gz -C /opt && \
     rm eclipse.tar.gz

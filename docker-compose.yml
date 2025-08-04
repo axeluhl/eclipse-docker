@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  eclipse:
+    build:
+      context: .
+      args:
+        USER_ID: ${UID}
+        GROUP_ID: ${GID}
+    image: eclipse-2025-06
+    container_name: eclipse-ide
+    user: "${UID}:${GID}"
+    environment:
+      - DISPLAY=${DISPLAY}
+    volumes:
+      - /home/uhl/eclipse-docker/eclipse_plugins:/home/developer/.eclipse
+      - /home/uhl/eclipse-docker/eclipse_workspace:/workspace
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /usr/local/src/git-sail:/usr/local/src/git-sail
+    stdin_open: true
+    tty: true
+
+volumes:
+  eclipse_plugins:
+  eclipse_workspace:
+

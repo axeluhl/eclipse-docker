@@ -12,16 +12,15 @@ services:
     user: "${UID}:${GID}"
     environment:
       - DISPLAY=${DISPLAY}
+      - WORKSPACE=${WORKSPACE}
     volumes:
-      - /home/uhl/eclipse-docker/eclipse_plugins:/home/developer/.eclipse
-      - /home/uhl/eclipse-docker/eclipse_dropins:/opt/eclipse/dropins
-      - ${WORKSPACE}:/workspace
+      - eclipse_install:/opt/eclipse
+      - ${WORKSPACE}:${WORKSPACE}
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - /usr/local/src/git-sail:/usr/local/src/git-sail
+      - /usr/local/gwt-2.11.0:/usr/local/gwt-2.11.0
+    command: ["sh", "-c", "echo Workspace inside container is $WORKSPACE && exec eclipse -data $WORKSPACE"] 
     stdin_open: true
     tty: true
 
 volumes:
-  eclipse_plugins:
-  eclipse_workspace:
-
+  eclipse_install:

@@ -1,5 +1,8 @@
 FROM openjdk:17-jdk-slim
 
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 # Install GTK and X11 dependencies for Eclipse UI
 RUN apt-get update && \
     apt-get install -y wget libxext6 libxrender1 libxtst6 libxi6 libgtk-3-0 libwebkit2gtk-4.0-37 dbus-x11 && \
@@ -27,5 +30,4 @@ RUN groupadd -g $GROUP_ID developer && \
 USER developer
 
 WORKDIR $ECLIPSE_HOME
-ENTRYPOINT ["./eclipse", "-data", "/workspace"]
-
+ENTRYPOINT ["/entrypoint.sh"]

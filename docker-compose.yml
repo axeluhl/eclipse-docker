@@ -14,6 +14,7 @@ services:
       - DISPLAY=${DISPLAY}
     volumes:
       - /home/uhl/eclipse-docker/eclipse_plugins:/home/developer/.eclipse
+      - /home/uhl/eclipse-docker/eclipse_dropins:/opt/eclipse/dropins
       - ${WORKSPACE}:/workspace
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /usr/local/src/git-sail:/usr/local/src/git-sail

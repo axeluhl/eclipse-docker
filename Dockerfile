@@ -2,7 +2,7 @@ FROM openjdk:17-jdk-slim
 
 # Install GTK and X11 dependencies for Eclipse UI
 RUN apt-get update && \
-    apt-get install -y wget libxext6 libxrender1 libxtst6 libxi6 libgtk-3-0 dbus-x11 && \
+    apt-get install -y wget libxext6 libxrender1 libxtst6 libxi6 libgtk-3-0 libwebkit2gtk-4.0-37 dbus-x11 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV ECLIPSE_HOME=/opt/eclipse

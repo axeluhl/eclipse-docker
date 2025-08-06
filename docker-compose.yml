@@ -8,6 +8,12 @@ services:
         USER_ID: ${UID}
         GROUP_ID: ${GID}
     image: eclipse-2025-06
+    ports:
+      - "8888:8888"
+      - "8889:8889"
+      - "9876:9876"
+      - "14888:14888"
+      - "12001:12001"
     container_name: eclipse-ide
     user: "${UID}:${GID}"
     environment:

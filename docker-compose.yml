@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   eclipse:
+    shm_size: '2gb'
     build:
       context: .
       args:

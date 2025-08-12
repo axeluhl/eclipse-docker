@@ -1,5 +1,5 @@
 FROM openjdk:17-jdk-slim
-ARG SAPJVM_VERSION=8.1.105
+ARG SAPJVM_VERSION=8.1.106
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 # Install GTK and X11 dependencies for Eclipse UI

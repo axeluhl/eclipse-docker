@@ -26,10 +26,11 @@ ARG GROUP_ID=1000
 RUN groupadd -g $GROUP_ID developer && \
     useradd -m -u $USER_ID -g developer developer && \
     chown -R developer:developer $ECLIPSE_HOME
-RUN wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip && \
-    unzip chromedriver_linux64.zip && \
-    mv chromedriver /usr/local/bin && \
-    rm chromedriver_linux64.zip
+RUN wget https://storage.googleapis.com/chrome-for-testing-public/139.0.7258.127/linux64/chromedriver-linux64.zip && \
+    unzip chromedriver-linux64.zip && \
+    mv chromedriver-linux64/chromedriver /usr/bin && \
+    rm chromedriver-linux64.zip && \
+    rm -rf chromedriver-linux64
 # Install dependencies for Chrome
 RUN apt-get update && apt-get install -y \
     gnupg \

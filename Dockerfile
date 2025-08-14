@@ -26,11 +26,6 @@ ARG GROUP_ID=1000
 RUN groupadd -g $GROUP_ID developer && \
     useradd -m -u $USER_ID -g developer developer && \
     chown -R developer:developer $ECLIPSE_HOME
-RUN wget https://storage.googleapis.com/chrome-for-testing-public/139.0.7258.127/linux64/chromedriver-linux64.zip && \
-    unzip chromedriver-linux64.zip && \
-    mv chromedriver-linux64/chromedriver /usr/bin && \
-    rm chromedriver-linux64.zip && \
-    rm -rf chromedriver-linux64
 # Install dependencies for Chrome
 RUN apt-get update && apt-get install -y \
     gnupg \
@@ -61,6 +56,14 @@ RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add
 RUN apt-get update && apt-get install -y google-chrome-stable \
  && rm -rf /var/lib/apt/lists/* \
  && apt-get -y upgrade
+# Install matching ChromeDriver dynamically into /usr/bin
+RUN CHROME_MAJOR_VERSION=$(google-chrome --version | sed -E 's/Google Chrome ([0-9]+)\..*/\1/') && \
+    DRIVER_VERSION=$(wget -qO- https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_${CHROME_MAJOR_VERSION}) && \
+    wget -q "https://storage.googleapis.com/chrome-for-testing-public/${DRIVER_VERSION}/linux64/chromedriver-linux64.zip" && \
+    unzip chromedriver-linux64.zip && \
+    mv chromedriver-linux64/chromedriver /usr/bin/chromedriver && \
+    chmod +x /usr/bin/chromedriver && \
+    rm -rf chromedriver-linux64.zip chromedriver-linux64
 USER developer
 WORKDIR $ECLIPSE_HOME
 ENTRYPOINT ["/entrypoint.sh"]

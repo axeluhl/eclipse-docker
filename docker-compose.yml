@@ -8,7 +8,7 @@ services:
       args:
         USER_ID: ${UID}
         GROUP_ID: ${GID}
-    image: eclipse-2025-06
+    image: eclipse-2025-09
     ports:
       - "8888:8888"
       - "8889:8889"

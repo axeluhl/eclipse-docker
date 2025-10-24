@@ -21,7 +21,7 @@ services:
       - DISPLAY=${DISPLAY}
       - WORKSPACE=${WORKSPACE}
     volumes:
-      - eclipse_install:/opt/eclipse
+      - eclipse_install_2025_09:/opt/eclipse
       - ${WORKSPACE}:${WORKSPACE}
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /usr/local/gwt-2.11.0:/usr/local/gwt-2.11.0
@@ -30,4 +30,4 @@ services:
     tty: true
 
 volumes:
-  eclipse_install:
+  eclipse_install_2025_09:

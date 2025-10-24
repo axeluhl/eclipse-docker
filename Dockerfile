@@ -16,7 +16,7 @@ ENV ECLIPSE_HOME=/opt/eclipse
 ENV WORKSPACE=/workspace
 WORKDIR /tmp
 # Use a direct mirror link for Eclipse 2025-09 tarball
-RUN wget -O eclipse.tar.gz "https://ftp.snt.utwente.nl/pub/software/eclipse/technology/epp/downloads/release/2025-09/R/eclipse-committers-2025-09-R-linux-gtk-x86_64.tar.gz" && \
+RUN wget  -O eclipse.tar.gz "https://ftp.snt.utwente.nl/pub/software/eclipse/technology/epp/downloads/release/2025-09/R/eclipse-committers-2025-09-R-linux-gtk-x86_64.tar.gz" && \
     mkdir -p $ECLIPSE_HOME && \
     tar -xzf eclipse.tar.gz -C /opt && \
     rm eclipse.tar.gz

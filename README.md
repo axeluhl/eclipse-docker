@@ -1,8 +1,14 @@
+Use this project to create a Docker image that can serve an up-to-date Eclipse version, independent
+of your host's operating system currentness.
+
 Launch with
 
 ```
   docker-compose up --build -d
 ```
+
+and do your usual Eclipse set-up with plug-in installation, or importing software packages
+from a file, or whatever you do to make yourself a home in your Eclipse environment.
 
 Get a shell in the container:
 
